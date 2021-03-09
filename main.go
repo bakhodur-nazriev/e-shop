@@ -8,13 +8,15 @@ import (
 )
 
 func main() {
-	r := gin.Default()
+	router := gin.Default()
 
 	models.ConnectToDatabase()
 
-	r.GET("/", controllers.GetProducts)
+	router.GET("/products", controllers.GetProducts)
+	router.POST("/products", controllers.CreateProduct)
+	router.GET("/product/:id", controllers.GetProduct)
 
-	r.Run()
+	router.Run(":8080")
 
 	//db, err := gorm.Open("postgres", "user=bakhodur password=1996 dbname=e-shop sslmode=disable")
 	//if err != nil {
