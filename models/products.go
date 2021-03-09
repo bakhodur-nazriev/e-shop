@@ -14,3 +14,11 @@ type Category struct {
 	ID    int `gorm:"primaryKey"`
 	Title string
 }
+
+type CreateProductInput struct {
+	Title       string  `json:"title" binding:"required"`
+	Code        string  `json:"code" binding:"required"`
+	Size        uint    `json:"size" binding:"required"`
+	Price       float64 `json:"price" binding:"required"`
+	Description string  `json:"description" binding:"required"`
+}
